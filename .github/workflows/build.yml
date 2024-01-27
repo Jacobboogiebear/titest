@@ -1,0 +1,15 @@
+name: Build example
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+      - name: Run build.cmd
+        run: bash ./build.cmd
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: DEMO
+          path: ${{ github.workspace }}/DEMO.8xp
