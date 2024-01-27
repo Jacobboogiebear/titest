@@ -1,8 +1,8 @@
-import subprocess, os, re
+import os, re
 
 includes = ["#include <ti/screen.h>"]
 
-funcs = ["os_ClrHome", "os_SetCursorPos", "os_PutStrFull"]
+funcs = ["os_ClrHome", "os_EnableCursor", "os_DisableCursor", "os_SetCursorPos", "os_PutStrFull"]
 fc = ""
 with open("./main.c", "r") as c:
 	c = c.read()
@@ -10,7 +10,6 @@ with open("./main.c", "r") as c:
 		e = 'void {}.*\n'.format(i)
 		c = re.sub(e, '', c)
 	c = re.sub(r'#ifndef __cplusplus\n.*\n#endif\n', '', c)
-	# c = "#include \"includer.h\"\n" + c
 	for include in includes:
 		c = include + "\n" + c
 	fc = c

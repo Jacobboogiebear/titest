@@ -7,9 +7,9 @@ mod ti;
 extern "C" fn main() {
 	let v = "Hello\0".as_ptr().cast::<core::ffi::c_char>();
 	unsafe {
-		ti::os_ClrHome();
-		ti::os_SetCursorPos(1, 1);
-		ti::os_PutStrFull(v);
+		ti::raw::os_ClrHome();
+		ti::raw::os_SetCursorPos(1, 1);
+		ti::raw::os_PutStrFull(v);
 	}
 	loop {};
 }
